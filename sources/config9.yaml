@@ -1,0 +1,191 @@
+port: 7891
+socks-port: 7892
+mixed-port: 7893
+external-controller: :7894
+external-ui: ui
+external-ui-name: xd
+external-ui-url: https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip
+redir-port: 7895
+tproxy-port: 7896
+allow-lan: true
+mode: rule
+log-level: debug
+tun:
+  enable: false
+  device: Mihomo
+  stack: mixed
+  auto-route: true
+  auto-redirect: false
+  auto-detect-interface: true
+  dns-hijack:
+    - any:53
+  route-exclude-address: []
+  mtu: 1500
+dns:
+  enabled: true
+  nameserver:
+    - 119.29.29.29
+    - 223.5.5.5
+  fallback-filter:
+    geoip: false
+    ipcidr:
+      - 240.0.0.0/4
+      - 0.0.0.0/32
+proxies:
+  - name: dongtaiwang.com_0                     
+    type: vmess
+    server: 104.21.238.200
+    port: 8443
+    uuid: 9201ffaa-6ca3-4f57-8b1f-266a2f390e43
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    servername: http3.9290254.xyz
+    network: ws
+    ws-opts:
+      path: github.com/Alvin9999
+      headers:
+        Host: http3.9290254.xyz
+      early-data-header-name: Sec-WebSocket-Protocol
+      v2ray-http-upgrade: true
+      v2ray-http-upgrade-fast-open: true
+  - name: dongtaiwang.com_1                   
+    type: vmess
+    server: 104.21.238.201
+    port: 8443
+    uuid: 9201ffaa-6ca3-4f57-8b1f-266a2f390e43
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    servername: http3.9290254.xyz
+    network: ws
+    ws-opts:
+      path: github.com/Alvin9999
+      headers:
+        Host: http3.9290254.xyz
+      early-data-header-name: Sec-WebSocket-Protocol
+      v2ray-http-upgrade: true
+      v2ray-http-upgrade-fast-open: true
+  - name: dongtaiwang.com_2                    
+    type: vmess
+    server: 104.21.238.202
+    port: 8443
+    uuid: 9201ffaa-6ca3-4f57-8b1f-266a2f390e43
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    servername: http3.9290254.xyz
+    network: ws
+    ws-opts:
+      path: github.com/Alvin9999
+      headers:
+        Host: http3.9290254.xyz
+      early-data-header-name: Sec-WebSocket-Protocol
+      v2ray-http-upgrade: true
+      v2ray-http-upgrade-fast-open: true
+  - name: dongtaiwang.com_3                     
+    type: vmess
+    server: 104.21.238.203
+    port: 8443
+    uuid: 9201ffaa-6ca3-4f57-8b1f-266a2f390e43
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    servername: http3.9290254.xyz
+    network: ws
+    ws-opts:
+      path: github.com/Alvin9999
+      headers:
+        Host: http3.9290254.xyz
+      early-data-header-name: Sec-WebSocket-Protocol
+      v2ray-http-upgrade: true
+      v2ray-http-upgrade-fast-open: true
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - DIRECT
+      - dongtaiwang.com_0
+      - dongtaiwang.com_1
+      - dongtaiwang.com_2
+      - dongtaiwang.com_3
+  - name: ♻️ 自动选择
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - dongtaiwang.com_0
+      - dongtaiwang.com_1
+      - dongtaiwang.com_2
+      - dongtaiwang.com_3
+  - name: 🌍 国外媒体
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🎯 全球直连
+      - dongtaiwang.com_0
+      - dongtaiwang.com_1
+      - dongtaiwang.com_2
+      - dongtaiwang.com_3
+  - name: 📲 电报信息
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - dongtaiwang.com_0
+      - dongtaiwang.com_1
+      - dongtaiwang.com_2
+      - dongtaiwang.com_3
+  - name: Ⓜ️ 微软服务
+    type: select
+    proxies:
+      - 🎯 全球直连
+      - 🚀 节点选择
+      - dongtaiwang.com_0
+      - dongtaiwang.com_1
+      - dongtaiwang.com_2
+      - dongtaiwang.com_3
+  - name: 🍎 苹果服务
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - dongtaiwang.com_0
+      - dongtaiwang.com_1
+      - dongtaiwang.com_2
+      - dongtaiwang.com_3
+  - name: 🎯 全球直连
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+      - ♻️ 自动选择
+  - name: 🛑 全球拦截
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+  - name: 🍃 应用净化
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+  - name: 🐟 漏网之鱼
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - ♻️ 自动选择
+      - dongtaiwang.com_0
+      - dongtaiwang.com_1
+      - dongtaiwang.com_2
+      - dongtaiwang.com_3
+rules:
+  - MATCH,🚀 节点选择
